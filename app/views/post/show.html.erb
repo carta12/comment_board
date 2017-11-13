@@ -1,0 +1,17 @@
+<h1>Post#show</h1>
+<p>글번호 : <%=@post.id%></p>
+<p>제목 : <%=@post.title%></p>
+<p>내 용 : <%=@post.content%></p>
+<a href="/post/modify/<%=@post.id%>">수정</a>
+<a href="/post/destroy/<%=@post.id%>">삭제</a>
+
+<!-- 댓글 form -->
+<form action="/post/create_comment">
+    <input type="hidden" name="post_id" value="<%= @post.id %>">
+    <input type="text" name="comment">
+    <input type="submit" value="완료">
+</form>
+
+<% @comments.each do |comment| %>
+<p><%= comment.content %></p>
+<% end %>

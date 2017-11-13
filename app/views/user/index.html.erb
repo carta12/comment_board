@@ -1,0 +1,16 @@
+<h1 style="text-align:center;">회원관리 페이지 입니다.</h1>
+
+<table style="width:100%; border:1px solid black; text-align:center;">
+  <tr>
+    <th>회원ID</th>
+    <th>Email</th>
+  </tr>
+
+<%@users.each do |user|%>
+  <tr>
+    <td style="border:1px solid black;"><%=user.id%></td>
+    <td style="border:1px solid black;"><a href="/user/show/<%=user.id%>"><%=user.email%></a></td> 
+  </tr>
+<%end%>
+
+</table>
