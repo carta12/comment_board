@@ -1,27 +1,32 @@
 Rails.application.routes.draw do
+  resources :blogs
+  
+  
   root 'post#index'
   
   get 'user/index'
 
   get 'user/new'
 
-  get 'user/create'
+  post 'user/create'
 
   get 'user/show/:id' =>'user#show'
   
   get 'user/login'
   
-  get 'user/login_process' => 'user#login_process'
+  post 'user/login_process' => 'user#login_process'
   
   get 'user/logout'
+  
+  get 'user/note'
 
   get 'post/index'
 
   get 'post/new'
 
-  get 'post/create'
+  post 'post/create'
   
-  get 'post/create_comment'
+  post 'post/create_comment'
 
   get 'post/show/:id' => 'post#show'
   

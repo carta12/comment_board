@@ -40,13 +40,13 @@ class UserController < ApplicationController
         flash[:notice] = "로그인 되었습니다."
         redirect_to '/'
       else
-        flash[:notice] = "패스워드를 다시 확인해 주세요"
+        flash[:alert] = "패스워드를 다시 확인해 주세요"
         redirect_to '/user/login'
         # @message = "패스워드를 다시 확인해 주세요"
       end
     else
       #@message = "이메일이 잘못되었거나 존재하지 않습니다."
-      flash[:notice] = "이메일이 잘못되었거나 존재하지 않습니다."
+      flash[:alert] = "이메일이 잘못되었거나 존재하지 않습니다."
       redirect_to '/user/login'
     end
   end
@@ -55,6 +55,9 @@ class UserController < ApplicationController
     session.clear
     flash[:notice] = "로그아웃 되었습니다."
     redirect_to '/'
+  end
+  
+  def note
   end
   
   
