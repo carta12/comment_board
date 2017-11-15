@@ -1,0 +1,7 @@
+
+
+<%= form_tag("/tweets/#{ @tweet.id }", method: "put") do %>
+    <%= text_field_tag(:content, @tweet.content) %>
+    <%= submit_tag("수정") %>
+<% end %>
+

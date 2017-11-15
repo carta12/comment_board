@@ -1,4 +1,7 @@
 class PostController < ApplicationController
+  before_action(:find_post, only: [:show, :edit, :update, :destroy])
+  
+  
   def index
     @posts = Post.all
   end
@@ -20,39 +23,26 @@ class PostController < ApplicationController
   end
 
   def show
-    @id = params[:id]
-    
-    @post = Post.find(@id)
     @comments = @post.comments
   end
   
-  def modify
-    @id = params[:id]
-    @post = Post.find(@id)
+  def edit
   end
   
   def update
-    @id = params[:id]
-    @title = params[:title]
-    @content = params[:content]
-    
-    post = Post.find(@id)
-    post.update(
-      title: @title,
-      content: @content
+    @post.update(
+      title:  params[:title],
+      content: params[:content]
       )
       
-    redirect_to "/post/show/#{@id}"
+    redirect_to "/post/show/#{params[:id]}"
     
   end
   
   
   
   def destroy
-    @id = params[:id]
-    
-    post = Post.find(@id)
-    post.destroy
+    @post.destroy
     redirect_to '/'
   end
   
@@ -66,7 +56,11 @@ class PostController < ApplicationController
       )
     
     redirect_to :back
-    
   end
+  
+  def find_post
+    @post = Post.find(params[:id])
+  end
+  
   
 end

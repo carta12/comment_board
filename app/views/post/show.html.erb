@@ -1,9 +1,11 @@
-<h1>Post#show</h1>
+<h1>제목 : <%=@post.title%></h1>
+<a href="/post/edit/<%=@post.id%>"><button type="button" class="btn btn-secondary btn-sm">수정</button></a>
+<a href="/post/destroy/<%=@post.id%>"><button type="button" class="btn btn-secondary btn-sm">삭제</button></a>
 <p>글번호 : <%=@post.id%></p>
-<p>제목 : <%=@post.title%></p>
+<p>작성자 : <%=@post.user.email%></p>
 <p>내 용 : <%=@post.content%></p>
-<a href="/post/modify/<%=@post.id%>">수정</a>
-<a href="/post/destroy/<%=@post.id%>">삭제</a>
+
+
 
 <!-- 댓글 form -->
 <!--<form action="/post/create_comment" method="post">-->
@@ -16,9 +18,8 @@
 <%= form_tag("/post/create_comment", method:"post") do %>
     <%= text_field_tag(:comment)%>
     <%= hidden_field_tag(:post_id, @post.id ) %>
-    <%= submit_tag("작성") %>
+    <%= submit_tag("댓글") %>
 <% end %>
-
 
 
 
